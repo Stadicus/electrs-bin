@@ -7,11 +7,11 @@ The binaries have been build on a RockPro64 board using Armbian 4.4.178.
 source repository:  
 https://github.com/romanz/electrs
 
-Build it yourself:
+Build it yourself (as root user):
 ```
 # install Rust
-mkdir -p /usr/local/src/rust
-cd /usr/local/src/rust
+mkdir rust
+cd rust
 curl https://static.rust-lang.org/dist/rust-1.34.1-aarch64-unknown-linux-gnu.tar.gz -o rust.tar.gz
 
 # must return 'rust.tar.gz: OK'
@@ -30,7 +30,7 @@ git checkout tags/v0.6.1
 cargo build --release
 
 # install electrs
-cp /usr/local/src/rust/electrs/target/release/electrs /usr/bin/
+cp ./target/release/electrs /usr/bin/
 ```
 
 
@@ -38,14 +38,17 @@ cp /usr/local/src/rust/electrs/target/release/electrs /usr/bin/
 source repository:  
 https://github.com/ElementsProject/lightning
 
-Build it yourself, using the PPA branch from Christian Decker:
+Build it yourself (as root user), using the PPA branch from Christian Decker:
 ```
+# build c-lightning
 git clone https://github.com/cdecker/lightning.git
 cd lightning/
 git checkout ppa
-sudo apt install debhelper pkg-config fakeroot dpkg-dev
-sudo dpkg-buildpackage -b -rfakeroot -us -uc
-```
+apt install debhelper pkg-config fakeroot dpkg-dev
+dpkg-buildpackage -b -rfakeroot -us -uc
 
-The package `lightningd_0.7.0-1_arm64.deb` is written in the partent directory and can be installed with `dpkg -i lightningd_0.7.0-1_arm64.deb`.
+# install c-lightning
+cd ..
+dpkg -i lightningd_0.7.0-1_arm64.deb
+```
 
