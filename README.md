@@ -7,6 +7,8 @@ The binaries have been build on a RockPro64 board using Armbian 4.4.178.
 Electrum Server in Rust, used to serve Electrum wallet clients.  
 https://github.com/romanz/electrs
 
+Reason for not using official binaries: no binary releases available.
+
 Build it yourself (as root user):
 ```
 # install Rust
@@ -37,6 +39,8 @@ cp ./target/release/electrs /usr/bin/
 ## c-lightning
 Bitcoin Lightning Network client in C  
 https://github.com/ElementsProject/lightning
+
+Reason for not using official binaries: package on [clightning launchpad](https://launchpad.net/clightning) depends on `clib6` >= 2.25, while stable branch of Armbian is still on 2.24.
 
 Build it yourself (as root user), using the PPA branch from Christian Decker:
 ```
