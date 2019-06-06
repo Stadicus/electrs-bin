@@ -1,10 +1,10 @@
 # bitbox-base-deps
-Temporary repository to host binary dependencies for the BitBox Base project, built for aarch64 ARM cpu Linux.
+This is a temporary repository to host binary dependencies for the [BitBox Base](https://github.com/digitalbitbox/bitbox-base) project, built for Linux ARMv8 cpu architecture, also known as aarch64 or arm64.
 
 The binaries have been build on a RockPro64 board using Armbian 4.4.178.
 
 ## electrs
-source repository:  
+Electrum Server in Rust, used to serve Electrum wallet clients.  
 https://github.com/romanz/electrs
 
 Build it yourself (as root user):
@@ -26,7 +26,7 @@ apt install clang cmake
 # compile electrs
 git clone https://github.com/romanz/electrs
 cd electrs
-git checkout tags/v0.6.1
+git checkout tags/v0.6.2
 cargo build --release
 
 # install electrs
@@ -35,7 +35,7 @@ cp ./target/release/electrs /usr/bin/
 
 
 ## c-lightning
-source repository:  
+Bitcoin Lightning Network client in C  
 https://github.com/ElementsProject/lightning
 
 Build it yourself (as root user), using the PPA branch from Christian Decker:
